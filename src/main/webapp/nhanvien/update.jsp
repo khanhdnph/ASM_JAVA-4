@@ -1,0 +1,125 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Nam Khanh
+  Date: 12/4/2023
+  Time: 1:54 PM
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+<body>
+
+<header>
+    <h3 style="text-align: center;">Thêm Thông Tin</h3>
+</header>
+
+<main class="container">
+    <section>
+        <form action="/nhan-vien/update" method="post">
+            <div class="row mt-4">
+                <div class="col-6">
+                    <label>Mã</label>
+                    <input type="text" class="form-control" name="ma" value="${nv.ma}"/>
+                </div>
+                <div class="col-6">
+                    <label>Tên</label>
+                    <input type="text" class="form-control" name="ten" value="${nv.ten}"/>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-6">
+                    <label>Tên Đệm</label>
+                    <input type="text" class="form-control" name="tenDem" value="${nv.tenDem}"/>
+                </div>
+                <div class="col-6">
+                    <label>Họ</label>
+                    <input type="text" class="form-control" name="ho" value="${nv.ho}"/>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-6">
+                    <label>Giới tính</label>
+                    <input type="radio" name="gioiTinh" value="Nam"  ${nv.gioiTinh=="Nam"?"checked":""}  checked/>Nam
+                    <input type="radio" name="gioiTinh" value="Nữ" ${nv.gioiTinh=="Nữ"?"checked":""} />Nu
+
+                </div>
+                <div class="col-6">
+                    <label>Ngày Sinh </label>
+                    <input type="date" class="form-control" name="ngaySinh" value="${nv.ngaySinh}"/>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-6">
+                    <label>Địa Chỉ</label>
+                    <input type="text" class="form-control" name="diaChi" value="${nv.diaChi}"/>
+                </div>
+                <div class="col-6">
+                    <label>SDT</label>
+                    <input type="text" class="form-control" name="sdt" value="${nv.sdt}"/>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-6">
+                    <label>Mật Khẩu</label>
+                    <input type="text" class="form-control" name="matKhau" value="${nv.matKhau}"/>
+                </div>
+                <div class="col-6">
+                    <label>Cưa Hang</label>
+                    <select name="cuaHang">
+                        <c:forEach items="${listCH}" var="ch">
+                            <option value="${ch.id}" ${ch.id==nv.cuaHang.id?"selected":""}>${ch.ten}</option>
+                        </c:forEach>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-6">
+                    <label>Chuc Vu</label>
+                    <select name="chucVu">
+                        <c:forEach items="${listCV}" var="cv">
+                            <option value="${cv.id}" ${cv.id==nv.chucVu.id?"selected":""}>${cv.ten}</option>
+                        </c:forEach>
+                    </select>
+                </div>
+
+                <div class="col-6">
+                    <label>Trang Thai</label>
+                    <input type="radio" name="trangThai" value="0" ${nv.trangThai==0?"checked":""}  checked/>On
+                    <input type="radio" name="trangThai" value="1" ${nv.trangThai==1?"checked":""} />Off
+                </div>
+            </div>
+
+            <div class="row mt-4" style="justify-content: center">
+                <button class="btn btn-success col-1 m-3" type="submit">
+                    Update
+                </button>
+            </div>
+        </form>
+    </section>
+</main>
+
+<footer><p style="text-align: center; margin-top: 50px"><b>Dương Nam Khánh</b></p></footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+        integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
+        crossorigin="anonymous"></script>
+</body>
+</html>
